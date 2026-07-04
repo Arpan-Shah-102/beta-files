@@ -1,0 +1,62 @@
+.grid-container {
+  width: 100%;
+  min-height: calc(100dvh - 220px);
+}
+.filters {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  position: relative;
+
+  & > label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+}
+hr {
+  border-color: gold;
+}
+button {
+  background-color: goldenrod;
+  color: white;
+  border: 2px solid goldenrod;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 16px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: rgb(255, 255, 255);
+    color: goldenrod;
+  }
+  &:active {
+    background-color: goldenrod;
+    color: white;
+  }
+}
+.dropdown {
+  position: absolute;
+  top: 30px;
+  background-color: white;
+  border: 1px solid goldenrod;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  align-items: flex-start;
+
+  & label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+  }
+  & input {
+    cursor: pointer;
+  }
+}

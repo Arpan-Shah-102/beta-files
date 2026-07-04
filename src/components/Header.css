@@ -1,0 +1,51 @@
+header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background: linear-gradient(to bottom right, rgb(0, 0, 0), rgb(30, 21, 0));
+  text-align: center;
+  color: white;
+  height: 100px;
+
+  & nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    height: 100%;
+    padding: 0 20px;
+  }
+
+  & ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    & li {
+      cursor: pointer;
+      
+      a {
+        text-decoration: none;
+        color: goldenrod;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: rgb(255, 255, 255);
+        }
+        &:active {
+          text-decoration: underline;
+          color: goldenrod;
+        }
+      }
+
+    }
+  }
+
+  & p {
+    font-family: "Source Code Pro", monospace;
+    font-size: 1.2rem;
+  }
+}
