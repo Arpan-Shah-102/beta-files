@@ -1,0 +1,17 @@
+footer {
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  background: linear-gradient(to bottom right, rgb(0, 0, 0), rgb(30, 21, 0));
+  text-align: center;
+  color: white;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & p {
+    font-family: "Source Code Pro", monospace;
+    font-size: 1.2rem;
+  }
+}
