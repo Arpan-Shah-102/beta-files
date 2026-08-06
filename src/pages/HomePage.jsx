@@ -1,5 +1,6 @@
 import { Header } from '../components/Header';
 import { Grid } from '../components/Grid';
+import assetData from '../data/asset-data.json';
 import '../App.css';
 
 export function HomePage() {
@@ -11,7 +12,7 @@ export function HomePage() {
 
       <main>
         <Grid
-          items={[]}
+          items={assetData}
         />
       </main>
     </>

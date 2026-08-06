@@ -5,6 +5,12 @@ import './Grid.css'
 export function Grid({ items }) {
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const tags = ["Filter", "Lights", "Good angle", "Conversation", "Bad lighting", "Bad angle",
+    "Jacob", "Ayden", "Tyce", "Jackson", "Caught", "Backflips", "Freaky", "Peak", "Singing",
+    "Spanking", "Opryland", "Pillow game", "Pillow demon", "White smash", "Spinning pillows",
+    "Smashing pillows", "Action", "Caught on filter", "Hand", "Dead", "Landry", "Sam", "Charlie",
+    "Cash", "Phoenix", "Braxton", "Devonte", "Football", "Jumping", "Filter Failed", "Caption",
+    "Audio", "Video", "Image", "Nationals", "State"];
 
   const handleDropdownToggle = () => {
     setDropdownOpen(!dropdownOpen);
@@ -27,47 +33,16 @@ export function Grid({ items }) {
         <button onClick={handleDropdownToggle}>Filter by Tags</button>
         {dropdownOpen && (
           <div className="dropdown">
-            <label>
-              <input
-                type="checkbox"
-                checked={selectedFilters.includes('state')}
-                onChange={() => {handleFilterChange('state')}}
-              />
-              State
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                checked={selectedFilters.includes('nationals')}
-                onChange={() => {handleFilterChange('nationals')}}
-              />
-              Nationals
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                checked={selectedFilters.includes('photos')}
-                onChange={() => {handleFilterChange('photos')}}
-              />
-              Photos
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                checked={selectedFilters.includes('videos')}
-                onChange={() => {handleFilterChange('videos')}}
-              />
-              Videos
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                checked={selectedFilters.includes('audio')}
-                onChange={() => {handleFilterChange('audio')}}
-              />
-              Audio
-            </label>
-
+            {tags.map((tag, index) => (
+              <label key={index}>
+                <input
+                  type="checkbox"
+                  checked={selectedFilters.includes(tag.toLowerCase())}
+                  onChange={() => {handleFilterChange(tag.toLowerCase())}}
+                />
+                {tag}
+              </label>
+            ))}
           </div>
         )}
 
@@ -84,7 +59,7 @@ export function Grid({ items }) {
       <hr />
 
       <div className="grid">
-        {items.map((item, index) => (
+        {Object.values(items).map((item, index) => (
           <Card
             key={index}
             item={item}

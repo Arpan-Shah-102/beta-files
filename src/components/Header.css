@@ -6,6 +6,7 @@ header {
   text-align: center;
   color: white;
   height: 100px;
+  z-index: 1000;
 
   & nav {
     display: flex;
@@ -38,6 +39,10 @@ header {
         &:active {
           text-decoration: underline;
           color: goldenrod;
+        }
+
+        &.active {
+          text-decoration: underline goldenrod;
         }
       }
 

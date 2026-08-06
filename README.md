@@ -4,6 +4,11 @@ Welcome to the Beta Files! This is a React website with images, videos, and audi
 
 ### Update Log
 
+#### UI Update V1.0 - 8/5/2026
+1. Added Preview of files
+2. Added Contacts Page
+3. Added Framework for further features.
+
 #### UI Update V0.75 - 7/3/2026
 1. Worked on components and UI
 2. Added logos and icons
