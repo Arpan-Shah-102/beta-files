@@ -5,13 +5,13 @@ footer {
   background: linear-gradient(to bottom right, rgb(0, 0, 0), rgb(30, 21, 0));
   text-align: center;
   color: white;
-  height: 100px;
+  height: 55px;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1000;
 
   & p {
     font-family: "Source Code Pro", monospace;
-    font-size: 1.2rem;
   }
 }

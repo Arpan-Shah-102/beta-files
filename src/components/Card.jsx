@@ -1,26 +1,52 @@
 import { NavLink } from 'react-router';
 import './Card.css'
 
-export function Card({ item }) {
-  const favoriteItems = localStorage.getItem('favoriteItems');
+export function Card({ item, favoriteItems }) {
+  const [getFavoriteItems, setFavoriteItems] = favoriteItems;
+  const namePath = item.name.toLowerCase().replace(/[\s/]+/g, '-');
+
+  function addtoFavorites(itemName) {
+    setFavoriteItems([...getFavoriteItems, itemName]);
+    localStorage.setItem('favoriteItems', JSON.stringify([...getFavoriteItems, itemName]));
+  }
+  function removeFromFavorites(itemName) {
+    const updatedFavorites = getFavoriteItems.filter((name) => name !== itemName);
+    setFavoriteItems(updatedFavorites);
+    localStorage.setItem('favoriteItems', JSON.stringify(updatedFavorites));
+  }
+
+  function handleFavoriteClick(e) {
+    const itemName = e.target.dataset.item;
+    if (getFavoriteItems && getFavoriteItems.includes(namePath)) {
+      removeFromFavorites(itemName);
+      e.target.textContent = '☆';
+    } else {
+      addtoFavorites(itemName);
+      e.target.textContent = '★';
+    }
+  }
 
   if (item.filetype == "text") {return;}
   return (
-    <NavLink
-      className={item.filetype == "audio" ? "audio-card" : ""}
-      to={`/${item.name.toLowerCase().replace(/\s+/g, '-')}`}
-    >
-      <div className="card">
-        {item.filetype == "image" && (<img src={item.path} alt={item.name} />)}
-        {item.filetype == "video" && (<video src={item.path} />)}
-        <h3>{item.name}</h3>
-        <p>{item.filetype[0].toUpperCase()}{item.filetype.slice(1)}</p>
-        {favoriteItems && favoriteItems.includes(item.name) ? (
-          <p className="favorite">★</p>
-        ) : (
-          <p className="favorite">☆</p>
-        )}
-      </div>
-    </NavLink>
+    <div className="full-card">
+      <p
+        className="favorite"
+        data-item={namePath}
+        onClick={handleFavoriteClick}
+      >
+        {getFavoriteItems && getFavoriteItems.includes(namePath) ? (<>★</>) : (<>☆</>)}
+      </p>
+      <NavLink
+        className={item.filetype == "audio" ? "audio-card" : ""}
+        to={`/${namePath}`}
+      >
+        <div className="card">
+          {item.filetype == "image" && (<img src={item.path} alt={item.name} />)}
+          {item.filetype == "video" && (<video src={item.path} />)}
+          <h3>{item.name}</h3>
+          <p>{item.filetype[0].toUpperCase()}{item.filetype.slice(1)}</p>
+        </div>
+      </NavLink>
+    </div>
   )
 } 

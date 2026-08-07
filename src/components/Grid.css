@@ -49,6 +49,7 @@ button {
   gap: 10px;
   max-height: 300px;
   overflow-y: auto;
+  z-index: 10;
 
   & label {
     display: flex;
@@ -59,13 +60,4 @@ button {
   & input {
     cursor: pointer;
   }
-}
-.grid {
-  width: 100%;
-  min-height: calc(100dvh - 220px);
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  justify-items: center;
-  gap: 20px;
-  margin: 20px 0;
 }

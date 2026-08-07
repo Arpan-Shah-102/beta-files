@@ -3,7 +3,7 @@ import { Grid } from '../components/Grid';
 import assetData from '../data/asset-data.json';
 import '../App.css';
 
-export function HomePage() {
+export function HomePage({ favoriteItems }) {
   return (
     <>
       <Header
@@ -13,6 +13,7 @@ export function HomePage() {
       <main>
         <Grid
           items={assetData}
+          favoriteItems={favoriteItems}
         />
       </main>
     </>

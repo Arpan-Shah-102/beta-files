@@ -1,16 +1,17 @@
 import { useState } from 'react'
-import { Card } from './Card'
+import { FilterGrid } from './FilterGrid';
 import './Grid.css'
 
-export function Grid({ items }) {
+export function Grid({ items, favoriteItems }) {
   const [selectedFilters, setSelectedFilters] = useState([]);
+  const [sortBy, setSortBy] = useState("default");
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const tags = ["Filter", "Lights", "Good angle", "Conversation", "Bad lighting", "Bad angle",
-    "Jacob", "Ayden", "Tyce", "Jackson", "Caught", "Backflips", "Freaky", "Peak", "Singing",
-    "Spanking", "Opryland", "Pillow game", "Pillow demon", "White smash", "Spinning pillows",
-    "Smashing pillows", "Action", "Caught on filter", "Hand", "Dead", "Landry", "Sam", "Charlie",
-    "Cash", "Phoenix", "Braxton", "Devonte", "Football", "Jumping", "Filter Failed", "Caption",
-    "Audio", "Video", "Image", "Nationals", "State"];
+  const tags = ["Audio", "Video", "Image", "Filter", "Lights", "Good angle", "Conversation",
+    "Bad lighting", "Bad angle", "Jacob", "Ayden", "Tyce", "Jackson", "Caught", "Backflips",
+    "Freaky", "Peak", "Singing", "Spanking", "Opryland", "Pillow game", "Pillow demon",
+    "White smash", "Spinning pillows", "Smashing pillows", "Action", "Caught on filter", "Hand",
+    "Dead", "Landry", "Sam", "Charlie", "Cash", "Phoenix", "Braxton", "Devonte", "Football",
+    "Jumping", "Filter Failed", "Caption", "Nationals", "State"];
 
   const handleDropdownToggle = () => {
     setDropdownOpen(!dropdownOpen);
@@ -25,6 +26,10 @@ export function Grid({ items }) {
       currentFilters.push(filter);
       setSelectedFilters(currentFilters);
     }
+  }
+
+  const handleSortChange = (newSortBy) => {
+    setSortBy(newSortBy);
   }
 
   return (
@@ -48,24 +53,23 @@ export function Grid({ items }) {
 
         <label>
           Sort by:
-          <select>
-            <option value="name">Name (A-Z)</option>
-            <option value="name">Name (Z-A)</option>
-            <option selected value="date">Date (Latest)</option>
-            <option value="date">Date (Earliest)</option>
+          <select value={sortBy} onChange={(e) => handleSortChange(e.target.value)}>
+            <option value="name">Default</option>
+            <option value="atoz">Name (A-Z)</option>
+            <option value="ztoa">Name (Z-A)</option>
+            <option value="late">Date (Latest)</option>
+            <option value="early">Date (Earliest)</option>
           </select>
         </label>
       </div>
       <hr />
 
-      <div className="grid">
-        {Object.values(items).map((item, index) => (
-          <Card
-            key={index}
-            item={item}
-          />
-        ))}
-      </div>
+      <FilterGrid
+        items={items}
+        sortBy={sortBy}
+        filterBy={selectedFilters}
+        favoriteItems={favoriteItems}
+      />
     </div>
   )
 }

@@ -1,3 +1,42 @@
+.full-card {
+  position: relative;
+}
+
+.favorite {
+  position: absolute;
+  top: -20px;
+  left: -5px;
+  cursor: pointer;
+  font-size: 2.5rem;
+  color: goldenrod;
+  text-align: center;
+  z-index: 1;
+  transition: all 0.3s ease-in-out;
+  
+  &::before {
+    content: '';
+    display: block;
+    background-color: white;
+    border: 2px solid goldenrod;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    z-index: -1;
+    top: 7.5px;
+    left: -5px
+  }
+  
+  &:hover {
+    scale: 1.1;
+  }
+  &:active {
+    color: goldenrod;
+    opacity: 0.8;
+    scale: 0.9;
+  }
+}
+
 .card {
   width: 300px;
   height: 400px;
@@ -5,7 +44,6 @@
   border-radius: 8px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   padding: 10px;
-  position: relative;
 
   display: flex;
   flex-direction: column;
@@ -13,24 +51,6 @@
   align-items: center;
   gap: 10px;
 
-  & .favorite {
-    position: absolute;
-    top: 0px;
-    left: 15px;
-    cursor: pointer;
-    font-size: 2.5rem;
-    color: goldenrod;
-    transition: all 0.3s ease-in-out;
-
-    &:hover {
-      color: rgb(255, 255, 255);
-    }
-    &:active {
-      color: goldenrod;
-      opacity: 0.8;
-      transform: rotate(-10deg);
-    }
-  }
   & img, & video {
     width: 100%;
     height: 300px;
