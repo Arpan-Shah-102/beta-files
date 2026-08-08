@@ -51,7 +51,9 @@ export function Grid({ items, favoriteItems }) {
           </div>
         )}
 
-        <label>
+        <input className="searchbar" type="text" placeholder="Search..." />
+
+        <label className="sortby">
           Sort by:
           <select value={sortBy} onChange={(e) => handleSortChange(e.target.value)}>
             <option value="name">Default</option>

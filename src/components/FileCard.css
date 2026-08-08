@@ -1,0 +1,67 @@
+.file-card {
+  position: relative;
+  
+  & img, & video {
+    width: calc(100% - 40px);
+    margin: 20px;
+    border-radius: 16px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
+    border: 2px solid goldenrod;
+  }
+  & audio {
+    margin: 20px;
+    border-radius: 32px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
+    border: 2px solid goldenrod;
+  }
+  &:has(audio) {
+    width: calc(100% - 40px);
+    margin: 20px;
+    border-radius: 16px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
+    border: 2px solid goldenrod;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & .favorite {
+      top: -25px;
+      left: -10px;
+    }
+  }
+  & .favorite {
+    position: absolute;
+    top: 0px;
+    left: 15px;
+    cursor: pointer;
+    font-size: 2.5rem;
+    color: goldenrod;
+    text-align: center;
+    z-index: 1;
+    transition: all 0.3s ease-in-out;
+    
+    &::before {
+      content: '';
+      display: block;
+      background-color: white;
+      border: 2px solid goldenrod;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
+      border-radius: 50%;
+      height: 40px;
+      width: 40px;
+      position: absolute;
+      z-index: -1;
+      top: 7.5px;
+      left: -5px
+    }
+    
+    &:hover {
+      scale: 1.1;
+    }
+    &:active {
+      color: goldenrod;
+      opacity: 0.8;
+      scale: 0.9;
+    }
+  }
+}
