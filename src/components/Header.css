@@ -16,6 +16,10 @@ header {
     height: 100%;
     padding: 0 20px;
   }
+  & h1 {
+    font-size: 1.5rem;
+    margin: 0;
+  }
 
   & ul {
     list-style: none;
@@ -52,5 +56,22 @@ header {
   & p {
     font-family: "Source Code Pro", monospace;
     font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 420px) {
+  ul {
+    gap: 10px !important;
+  }
+  li {
+    font-size: 0.8rem !important;
+  }
+  img {
+    width: 100px;
+    height: 50px;
+    object-fit: contain;
+  }
+  h1 {
+    font-size: 1.15rem !important;
   }
 }

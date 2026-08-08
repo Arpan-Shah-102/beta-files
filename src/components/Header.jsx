@@ -6,7 +6,7 @@ export function Header({ title }) {
     <header>
       <nav>
         <NavLink to="/"><img src="logo-expanded-white.png" alt="Beta Files Logo" height="50" /></NavLink>
-        <h2>{title}</h2>
+        <h1>{title}</h1>
         <ul>
           <li><NavLink to="/">All</NavLink></li>
           <li><NavLink to="/favorite">Favorite</NavLink></li>

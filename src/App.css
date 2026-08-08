@@ -1,4 +1,5 @@
 main {
   min-height: calc(100dvh - 155px);
   padding: 10px;
+  overflow-x: hidden;
 }

@@ -4,6 +4,11 @@ Welcome to the Beta Files! This is a React website with images, videos, and audi
 
 ### Update Log
 
+#### Mobile Support Update V2.1 - 8/8/2026
+1. Added Mobile Support
+2. Changed Page titles depending on page
+3. Bug fixes
+
 #### Full Finished Update V2.0 - 8/8/2026
 1. Added Search Bar
 2. Addded Filter Terms Feature

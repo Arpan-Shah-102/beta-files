@@ -24,6 +24,7 @@ export function FilePage({ item, favoriteItems }) {
       <Header
         title={item.name}
       />
+      <title>{item.name}</title>
 
       <main>
         <FileCard

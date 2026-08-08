@@ -4,7 +4,10 @@
 }
 .filters {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-evenly;
+  align-items: center;
   margin-bottom: 10px;
   position: relative;
   font-family: "Raleway", sans-serif;

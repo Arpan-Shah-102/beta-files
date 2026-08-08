@@ -11,6 +11,7 @@ export function Favorite({ favoriteItems }) {
       <Header
         title="Favorite Files"
       />
+      <title>Favorite Files</title>
 
       <main>
         {getFavoriteItems && getFavoriteItems.length > 0 ? (
