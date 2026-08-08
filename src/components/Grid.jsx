@@ -5,7 +5,9 @@ import './Grid.css'
 export function Grid({ items, favoriteItems }) {
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [sortBy, setSortBy] = useState("default");
+  const [searchTerm, setSearchTerm] = useState("");
   const [dropdownOpen, setDropdownOpen] = useState(false);
+
   const tags = ["Audio", "Video", "Image", "Filter", "Lights", "Good angle", "Conversation",
     "Bad lighting", "Bad angle", "Jacob", "Ayden", "Tyce", "Jackson", "Caught", "Backflips",
     "Freaky", "Peak", "Singing", "Spanking", "Opryland", "Pillow game", "Pillow demon",
@@ -32,6 +34,10 @@ export function Grid({ items, favoriteItems }) {
     setSortBy(newSortBy);
   }
 
+  function search(e) {
+    setSearchTerm(e.target.value.toLowerCase());
+  }
+
   return (
     <div className="grid-container">
       <div className="filters">
@@ -51,7 +57,7 @@ export function Grid({ items, favoriteItems }) {
           </div>
         )}
 
-        <input className="searchbar" type="text" placeholder="Search..." />
+        <input onChange={search} className="searchbar" type="text" placeholder="Search..." />
 
         <label className="sortby">
           Sort by:
@@ -69,6 +75,7 @@ export function Grid({ items, favoriteItems }) {
       <FilterGrid
         items={items}
         sortBy={sortBy}
+        searchTerm={searchTerm}
         filterBy={selectedFilters}
         favoriteItems={favoriteItems}
       />

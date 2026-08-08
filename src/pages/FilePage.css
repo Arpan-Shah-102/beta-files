@@ -25,11 +25,29 @@
     padding: 6px 12px;
     color: white;
     font-size: 0.9rem;
-
+    
     &.tag-0 {background-color: red;}
     &.tag-1 {background-color: forestgreen;}
     &.tag-2 {background-color: blue;}
     &.tag-3 {background-color: rebeccapurple;}
     &.tag-4 {background-color: goldenrod;}
+    &.tag-5 {background-color: red;}
+    &.tag-6 {background-color: forestgreen;}
+    &.tag-7 {background-color: blue;}
+    &.tag-8 {background-color: rebeccapurple;}
+    &.tag-9 {background-color: goldenrod;}
+  }
+}
+.captions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: 10px;
+
+  & pre {
+    font-family: "Raleway", sans-serif;
+    text-wrap: break-word;
+    white-space: pre-wrap;
   }
 }

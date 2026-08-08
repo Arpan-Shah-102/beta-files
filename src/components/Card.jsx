@@ -28,7 +28,9 @@ export function Card({ item, favoriteItems }) {
 
   if (item.filetype == "text") {return;}
   return (
-    <div className="full-card">
+    <div
+      className="full-card"
+    >
       <p
         className="favorite"
         data-item={namePath}
@@ -37,12 +39,14 @@ export function Card({ item, favoriteItems }) {
         {getFavoriteItems && getFavoriteItems.includes(namePath) ? (<>★</>) : (<>☆</>)}
       </p>
       <NavLink
-        className={item.filetype == "audio" ? "audio-card" : ""}
         to={`/${namePath}`}
       >
-        <div className="card">
+        <div
+          className={`card ${item.filetype == "audio" ? "audio-card" : ""}`}
+        >
           {item.filetype == "image" && (<img src={item.path} alt={item.name} />)}
           {item.filetype == "video" && (<video src={item.path} />)}
+          {item.filetype == "audio" && (<audio src={item.path} controls />)}
           <h3>{item.name}</h3>
           <p>{item.filetype[0].toUpperCase()}{item.filetype.slice(1)}</p>
         </div>

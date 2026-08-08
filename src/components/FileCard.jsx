@@ -21,9 +21,27 @@ export function FileCard({ item, favoriteItems }) {
     }
   }
 
+  function handleFullscreenClick() {
+    const wrapper = document.querySelector('.image-container');
+    const buttonElement = document.querySelector('.fullscreen');
+
+    if (document.fullscreenElement) {
+      document.exitFullscreen();
+      buttonElement.textContent = '⛶';
+    } else {
+      wrapper.requestFullscreen();
+      buttonElement.textContent = '🗗';
+    }
+  }
+
   return (
     <div className="file-card">
-      {item.filetype === "image" && (<img src={item.path} alt={item.name} />)}
+      {item.filetype === "image" && (
+        <div className="image-container">
+          <img className="file-image" src={item.path} alt={item.name} />
+          <button onClick={handleFullscreenClick} className="fullscreen">⛶</button>
+        </div>
+      )}
       {item.filetype === "video" && (<video src={item.path} controls />)}
       {item.filetype === "audio" && (<audio src={item.path} controls />)}
       <p

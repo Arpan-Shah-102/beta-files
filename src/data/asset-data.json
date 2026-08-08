@@ -2276,60 +2276,6 @@
     "path": "https://archive.org/download/20260627-000805/2026 Nationals/Photos/Snapchat-999869815.jpg",
     "index": 265
   },
-  "Ayden vingoer_original.txt": {
-    "type": "nationals",
-    "filetype": "text",
-    "date": "20260702",
-    "tags": ["ayden", "caption"],
-    "name": "Ayden says Viniger Captions",
-    "path": "https://archive.org/download/20260703_205230/The Beta Files/2026 Nationals/Audio/Ayden vingoer_original.txt",
-    "index": 266
-  },
-  "Beta Blitz - Beta Files_original.txt": {
-    "type": "nationals",
-    "filetype": "text",
-    "date": "20260702",
-    "tags": ["beta blitz", "caption"],
-    "name": "Beta Blitz Waiting Captions",
-    "path": "https://archive.org/download/20260703_205230/The Beta Files/2026 Nationals/Audio/Beta Blitz - Beta Files_original.txt",
-    "index": 267
-  },
-  "Devonte wants to kiss_original.txt": {
-    "type": "nationals",
-    "filetype": "text",
-    "date": "20260702",
-    "tags": ["devonte", "caption"],
-    "name": "Devonte wants a Kiss Captions",
-    "path": "https://archive.org/download/20260703_205230/The Beta Files/2026 Nationals/Audio/Devonte wants to kiss_original.txt",
-    "index": 268
-  },
-  "Dihvonte ice cream_original.txt": {
-    "type": "nationals",
-    "filetype": "text",
-    "date": "20260702",
-    "tags": ["dihvonte", "caption"],
-    "name": "Dihvonte Hates Chocolate Ice Cream Captions",
-    "path": "https://archive.org/download/20260703_205230/The Beta Files/2026 Nationals/Audio/Dihvonte ice cream_original.txt",
-    "index": 269
-  },
-  "Italy_original.txt": {
-    "type": "nationals",
-    "filetype": "text",
-    "date": "20260702",
-    "tags": ["italy", "caption"],
-    "name": "Italy Captions",
-    "path": "https://archive.org/download/20260703_205230/The Beta Files/2026 Nationals/Audio/Italy_original.txt",
-    "index": 270
-  },
-  "Something_original.txt": {
-    "type": "nationals",
-    "filetype": "text",
-    "date": "20260702",
-    "tags": ["conversation", "caption"],
-    "name": "Random Conversation Captions",
-    "path": "https://archive.org/download/20260703_205230/The Beta Files/2026 Nationals/Audio/Something_original.txt",
-    "index": 271
-  },
   "Ayden vingoer_original.m4a": {
     "type": "nationals",
     "filetype": "audio",
@@ -2337,6 +2283,7 @@
     "tags": ["ayden", "caption"],
     "name": "Ayden says Viniger Audio",
     "path": "https://archive.org/download/20260703_205230/The Beta Files/2026 Nationals/Audio/Ayden vingoer_original.m4a",
+    "captions": "https://archive.org/download/20260703_205230/The Beta Files/2026 Nationals/Audio/Ayden vingoer_original.txt",
     "index": 272
   },
   "Beta Blitz - Beta Files_original.m4a": {
@@ -2346,6 +2293,7 @@
     "tags": ["beta blitz", "audio"],
     "name": "Beta Blitz Waiting Audio",
     "path": "https://archive.org/download/20260703_205230/The Beta Files/2026 Nationals/Audio/Beta Blitz - Beta Files_original.m4a",
+    "captions": "https://archive.org/download/20260703_205230/The Beta Files/2026 Nationals/Audio/Beta Blitz - Beta Files_original.txt",
     "index": 273
   },
   "Devonte wants to kiss_original.m4a": {
@@ -2355,6 +2303,7 @@
     "tags": ["devonte", "audio"],
     "name": "Devonte wants a Kiss Audio",
     "path": "https://archive.org/download/20260703_205230/The Beta Files/2026 Nationals/Audio/Devonte wants to kiss_original.m4a",
+    "captions": "https://archive.org/download/20260703_205230/The Beta Files/2026 Nationals/Audio/Devonte wants to kiss_original.txt",
     "index": 274
   },
   "Dihvonte ice cream_original.m4a": {
@@ -2364,6 +2313,7 @@
     "tags": ["devonte", "audio"],
     "name": "Devonte Hates Chocolate Ice Cream Audio",
     "path": "https://archive.org/download/20260703_205230/The Beta Files/2026 Nationals/Audio/Dihvonte ice cream_original.m4a",
+    "captions": "https://archive.org/download/20260703_205230/The Beta Files/2026 Nationals/Audio/Dihvonte ice cream_original.txt",
     "index": 275
   },
   "Italy_original.m4a": {
@@ -2373,6 +2323,7 @@
     "tags": ["italy", "audio"],
     "name": "Italy Audio",
     "path": "https://archive.org/download/20260703_205230/The Beta Files/2026 Nationals/Audio/Italy_original.m4a",
+    "captions": "https://archive.org/download/20260703_205230/The Beta Files/2026 Nationals/Audio/Italy_original.txt",
     "index": 276
   },
   "Something_original.m4a": {
@@ -2382,6 +2333,7 @@
     "tags": ["conversation", "audio"],
     "name": "Random Conversation Audio",
     "path": "https://archive.org/download/20260703_205230/The Beta Files/2026 Nationals/Audio/Something_original.m4a",
+    "captions": "https://archive.org/download/20260703_205230/The Beta Files/2026 Nationals/Audio/Something_original.txt",
     "index": 277
   }
 }

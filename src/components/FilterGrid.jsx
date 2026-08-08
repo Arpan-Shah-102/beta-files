@@ -1,15 +1,23 @@
 import { Card } from './Card'
 import './FilterGrid.css';
 
-export function FilterGrid({ items, sortBy, filterBy, favoriteItems}) {
+export function FilterGrid({ items, sortBy, searchTerm, filterBy, favoriteItems}) {
   const getFavoriteItems = favoriteItems[0];
   const sortedItems = [];
-  const newItems = [];
+  let newItems = [];
 
   if (sortBy == "default") {
     sortedItems.push(...Object.values(items));
+  } else if (sortBy == "atoz") {
+    sortedItems.push(...Object.values(items).sort((a, b) => a.name.localeCompare(b.name)));
+  } else if (sortBy == "ztoa") {
+    sortedItems.push(...Object.values(items).sort((a, b) => b.name.localeCompare(a.name)));
+  } else if (sortBy == "early") {
+    sortedItems.push(...Object.values(items).sort((a, b) => a.date - b.date));
+  } else if (sortBy == "late") {
+    sortedItems.push(...Object.values(items).sort((a, b) => b.date - a.date));
   } else {
-    sortedItems.push(...Object.values(items)); // temporary
+    sortedItems.push(...Object.values(items));
   }
   
   if (filterBy == "favorite") {
@@ -22,11 +30,40 @@ export function FilterGrid({ items, sortBy, filterBy, favoriteItems}) {
       });
     }
   } else if (filterBy.length > 0) {
-    console.log("Filtering by tags:", filterBy);
+    newItems = [...sortedItems];
+    const mediaFilters = ['audio', 'image', 'video'];
 
-    newItems.push(...Object.values(sortedItems)); // temporary
+    const filteredItems = sortedItems.filter((item) => {
+      const selectedMediaFilters = filterBy.filter((filter) =>
+        mediaFilters.includes(filter)
+      );
+      const selectedTagFilters = filterBy.filter((filter) =>
+        !mediaFilters.includes(filter)
+      );
+
+      const matchesMedia =
+        selectedMediaFilters.length === 0 ||
+        selectedMediaFilters.includes(item.filetype);
+
+      const matchesTags =
+        selectedTagFilters.length === 0 ||
+        selectedTagFilters.every((selectedTag) =>
+          item.tags?.some((tag) => tag.toLowerCase() === selectedTag)
+        );
+
+      return matchesMedia && matchesTags;
+    });
+    newItems = filteredItems;
   } else {
     newItems.push(...Object.values(sortedItems));
+  }
+
+  if (searchTerm && searchTerm.trim() != "") {
+    const search = searchTerm.toLowerCase().trim();
+  
+    newItems = newItems.filter((item) =>
+      item.name.toLowerCase().includes(search)
+    );
   }
 
   return (
