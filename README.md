@@ -2,6 +2,20 @@
 
 Welcome to the Beta Files! This is a React website with images, videos, and audio from the 2026 Kentucky State Beta convention and 2026 National Beta convention. Everything is organized into a list. You can filter the list with tags, media type, or by date. Opening a file will show more data on it and make it bigger. The data is stored on internet archive because it is free and can hold 14gb.
 
+### How to run
+#### Online
+1. Visit [The Beta Files](https://the-beta-files.vercel.app)
+
+#### Localy
+1. Download the project code or clone the project
+2. Open the unzipped project folder in your terminal
+3. Install dependencies with `npm install`
+4. Start the app with npm run dev
+5. Open [http://localhost:5173/] (https://localhost:5173/) in your browser
+
+#### Note
+This won't fix the slow loading times bug. The assets take a while to load, even if you go to their specific pages.
+
 ### Update Log
 
 #### Mobile Support Update V2.1 - 8/8/2026
