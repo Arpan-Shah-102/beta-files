@@ -18,6 +18,11 @@ This won't fix the slow loading times bug. The assets take a while to load, even
 
 ### Update Log
 
+#### Loading Update V2.2 - 8/13/2026
+1. Added Loading indicators on assets
+2. Fixed minor bugs
+3. Added how to run section
+
 #### Mobile Support Update V2.1 - 8/8/2026
 1. Added Mobile Support
 2. Changed Page titles depending on page

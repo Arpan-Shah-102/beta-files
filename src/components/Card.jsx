@@ -1,8 +1,10 @@
 import { NavLink } from 'react-router';
+import { useState } from 'react';
 import './Card.css'
 
 export function Card({ item, favoriteItems }) {
   const [getFavoriteItems, setFavoriteItems] = favoriteItems;
+  const [isLoading, setIsLoading] = useState(true);
   const namePath = item.name.toLowerCase().replace(/[\s/]+/g, '-');
 
   function addtoFavorites(itemName) {
@@ -26,6 +28,10 @@ export function Card({ item, favoriteItems }) {
     }
   }
 
+  function handleLoaded() {
+    setIsLoading(false);
+  }
+
   if (item.filetype == "text") {return;}
   return (
     <div
@@ -44,9 +50,16 @@ export function Card({ item, favoriteItems }) {
         <div
           className={`card ${item.filetype == "audio" ? "audio-card" : ""}`}
         >
-          {item.filetype == "image" && (<img src={item.path} alt={item.name} />)}
-          {item.filetype == "video" && (<video src={item.path} />)}
-          {item.filetype == "audio" && (<audio src={item.path} controls />)}
+          {isLoading && (
+            <img
+              className="loading-spinner"
+              src="/loading.gif"
+              alt="Loading..."
+            />
+          )}
+          {item.filetype == "image" && (<img src={item.path} alt={item.name} onLoad={handleLoaded} />)}
+          {item.filetype == "video" && (<video src={item.path} onLoadedData={handleLoaded} />)}
+          {item.filetype == "audio" && (<audio src={item.path} controls onLoadedData={handleLoaded} />)}
           <h3>{item.name}</h3>
           <p>{item.filetype[0].toUpperCase()}{item.filetype.slice(1)}</p>
         </div>

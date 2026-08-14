@@ -1,8 +1,10 @@
+import { useState } from "react";
 import "./FileCard.css";
 
 export function FileCard({ item, favoriteItems }) {
   const namePath = item.name.toLowerCase().replace(/[\s/]+/g, '-');
   const [getFavoriteItems, setFavoriteItems] = favoriteItems;
+  const [isLoading, setIsLoading] = useState(true);
 
   function addtoFavorites() {
     setFavoriteItems([...getFavoriteItems, namePath]);
@@ -34,16 +36,55 @@ export function FileCard({ item, favoriteItems }) {
     }
   }
 
+  function handleLoaded() {
+    console.log('File loaded successfully');
+    setIsLoading(false);
+  }
+
   return (
     <div className="file-card">
+      {isLoading && (
+        <div className="centerer">
+          <img
+            className="loading-spinner"
+            src="/loading.gif"
+            alt="Loading..."
+          />
+        </div>
+      )}
       {item.filetype === "image" && (
         <div className="image-container">
-          <img className="file-image" src={item.path} alt={item.name} />
+          <img
+            className="file-image"
+            src={item.path}
+            alt={item.name}
+            onLoad={handleLoaded}
+          />
           <button onClick={handleFullscreenClick} className="fullscreen">⛶</button>
         </div>
       )}
-      {item.filetype === "video" && (<video src={item.path} controls />)}
-      {item.filetype === "audio" && (<audio src={item.path} controls />)}
+      {item.filetype === "video" && (
+        <video
+          src={item.path}
+          controls
+          preload="auto"
+          onLoadedData={handleLoaded}
+          />
+        )
+      }
+      {item.filetype === "audio" && (
+        <audio
+          src={item.path}
+          controls
+          preload="auto"
+          onLoadedData={handleLoaded}
+          onError={() => {
+            setIsLoading(false);
+            alert('Error loading audio file. Please try again later.');
+          }}
+          />
+        )
+      }
       <p
         className="favorite"
         onClick={handleFavoriteClick}

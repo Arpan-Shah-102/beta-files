@@ -57,9 +57,21 @@
     object-fit: cover;
     border-radius: 8px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+
+    &.loading-spinner {
+      position: absolute;
+      top: 15%;
+      left: 50%;
+      transform: translateX(-50%);
+      box-shadow: none;
+    }
   }
   &:has(audio) {
     height: 150px;
+
+    & .loading-spinner {
+      display: none;
+    }
   }
   & audio {
     width: 100%;

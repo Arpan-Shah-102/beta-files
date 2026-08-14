@@ -51,3 +51,16 @@
     white-space: pre-wrap;
   }
 }
+
+.centerer {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+.loading-spinner {
+  max-height: 200px;
+  max-width: 200px;
+}
