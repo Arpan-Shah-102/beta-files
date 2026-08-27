@@ -11,7 +11,7 @@ Welcome to the Beta Files! This is a React website with images, videos, and audi
 2. Open the unzipped project folder in your terminal
 3. Install dependencies with `npm install`
 4. Start the app with npm run dev
-5. Open [http://localhost:5173/] (https://localhost:5173/) in your browser
+5. Open [http://localhost:5173/](https://localhost:5173/) in your browser
 
 #### Note
 This won't fix the slow loading times bug. The assets take a while to load, even if you go to their specific pages.
