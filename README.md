@@ -10,7 +10,7 @@ Welcome to the Beta Files! This is a React website with images, videos, and audi
 1. Download the project code or clone the project
 2. Open the unzipped project folder in your terminal
 3. Install dependencies with `npm install`
-4. Start the app with npm run dev
+4. Start the app with `npm run dev`
 5. Open [http://localhost:5173/](https://localhost:5173/) in your browser
 
 #### Note
