@@ -33,7 +33,8 @@ function App() {
         />
         <Route path="/contact" element={<Contact />} />
         {Object.values(assetData).map((item, index) => {
-          const namePath = item.name.toLowerCase().replace(/[\s/]+/g, '-');
+          let namePath = item.name.toLowerCase().replace(/[\s/]+/g, '-');
+          namePath = namePath.replace(/[^a-z0-9-]/g, '');
           return (
             <Route
               key={index}

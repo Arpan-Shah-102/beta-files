@@ -23,7 +23,8 @@ export function FilterGrid({ items, sortBy, searchTerm, filterBy, favoriteItems}
   if (filterBy == "favorite") {
     if (getFavoriteItems && getFavoriteItems.length > 0) {
       Object.values(sortedItems).filter((item) => {
-        const namePath = item.name.toLowerCase().replace(/[\s/]+/g, '-');
+        let namePath = item.name.toLowerCase().replace(/[\s/]+/g, '-');
+        namePath = namePath.replace(/[^a-z0-9-]/g, '');
         if (getFavoriteItems.includes(namePath)) {
           newItems.push(item);
         }

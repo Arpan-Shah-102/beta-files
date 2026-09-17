@@ -5,7 +5,8 @@ import './Card.css'
 export function Card({ item, favoriteItems }) {
   const [getFavoriteItems, setFavoriteItems] = favoriteItems;
   const [isLoading, setIsLoading] = useState(true);
-  const namePath = item.name.toLowerCase().replace(/[\s/]+/g, '-');
+  let namePath = item.name.toLowerCase().replace(/[\s/]+/g, '-');
+  namePath = namePath.replace(/[^a-z0-9-]/g, '');
 
   function addtoFavorites(itemName) {
     setFavoriteItems([...getFavoriteItems, itemName]);

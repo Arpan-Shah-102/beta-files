@@ -2,7 +2,8 @@ import { useState } from "react";
 import "./FileCard.css";
 
 export function FileCard({ item, favoriteItems }) {
-  const namePath = item.name.toLowerCase().replace(/[\s/]+/g, '-');
+  let namePath = item.name.toLowerCase().replace(/[\s/]+/g, '-');
+  namePath = namePath.replace(/[^a-z0-9-]/g, '');
   const [getFavoriteItems, setFavoriteItems] = favoriteItems;
   const [isLoading, setIsLoading] = useState(true);
 
