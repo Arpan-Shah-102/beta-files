@@ -59,7 +59,7 @@ export function Card({ item, favoriteItems }) {
             />
           )}
           {item.filetype == "image" && (<img src={item.path} alt={item.name} onLoad={handleLoaded} />)}
-          {item.filetype == "video" && (<video src={item.path} onLoadedData={handleLoaded} />)}
+          {item.filetype == "video" && (<video src={item.path} preload="metadata" onLoadedData={handleLoaded} />)}
           {item.filetype == "audio" && (<audio src={item.path} controls onLoadedData={handleLoaded} />)}
           <h3>{item.name}</h3>
           <p>{item.filetype[0].toUpperCase()}{item.filetype.slice(1)}</p>

@@ -24,6 +24,16 @@ export function FilePage({ item, favoriteItems }) {
     setIsLoading(false);
   }
 
+  function sharePage(e) {
+    const pageUrl = window.location.href;
+    const btn = e.target;
+    navigator.clipboard.writeText(pageUrl);
+    btn.textContent = 'Copied!';
+    setTimeout(() => {
+      btn.innerHTML = 'Share <b>⁖</b>';
+    }, 2000);
+  }
+
   return (
     <>
       <Header
@@ -61,6 +71,19 @@ export function FilePage({ item, favoriteItems }) {
         <div className="section">
           <h3>Location: {capitalizeStr(item.type)}</h3>
           <h3>Type: {capitalizeStr(item.filetype)}</h3>
+        </div>
+        <div className="section options">
+          <button onClick={sharePage} className="share-btn">Share <b>⁖</b></button>
+
+          <label>
+            Save to
+            <select>
+              <option value="placeholder">Placeholder</option>
+              <option value="unavilable">Feature unavailable</option>
+              <option value="later">Try later</option>
+            </select>
+            <button className="save">Save</button>
+          </label>
         </div>
         <div className="section tag-section">
           <h3>Tags: </h3>

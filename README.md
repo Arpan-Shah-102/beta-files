@@ -18,6 +18,12 @@ This won't fix the slow loading times bug. The assets take a while to load, even
 
 ### Update Log
 
+#### Vercel Update V2.5 - 9/19/2026
+1. Fixed bug where sharing link doesn't work on vercel
+2. Added a share button to each file page
+3. URL simplified for file page
+4. Bug Fixes
+
 #### Loading Update V2.2 - 8/13/2026
 1. Added Loading indicators on assets
 2. Fixed minor bugs
