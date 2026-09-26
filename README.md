@@ -18,6 +18,9 @@ This won't fix the slow loading times bug. The assets take a while to load, even
 
 ### Update Log
 
+#### Bug Fix V4.2 - 9/26/2026
+1. Updated Recently Viewed to make it simpler
+
 #### Bug Fix V4.1 - 9/26/2026
 1. Fixed recently viewed bug
 

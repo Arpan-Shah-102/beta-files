@@ -6,10 +6,6 @@ import assetData from '../data/asset-data.json';
 import "./HomePage.css";
 
 export function HomePage({ favoriteItems, recentlyViewedItems, lists }) {
-  const sortedRecentlyViewedItems = recentlyViewedItems
-    .map((itemIndex) => Object.values(assetData).find((item) => item.index === itemIndex[0]))
-    .filter((item) => item !== undefined)
-    .sort((a, b) => b.index - a.index);
   const sortedLists = [...lists].sort((a, b) => new Date(b.updatedDate) - new Date(a.updatedDate));
 
   return (
@@ -28,14 +24,18 @@ export function HomePage({ favoriteItems, recentlyViewedItems, lists }) {
             <NavLink to="/recently-viewed">Recently Viewed →</NavLink>
             <div className="scroll-container">
               <div className="scroll-thing">
-                {sortedRecentlyViewedItems.length > 0 ? (
-                  sortedRecentlyViewedItems.map((item, index) => (
-                    <Card
-                      key={index}
-                      item={item}
-                      favoriteItems={favoriteItems}
-                    />
-                  ))
+                {recentlyViewedItems.length > 0 ? (
+                  recentlyViewedItems.map((itemIndex) => {
+                    const item = Object.values(assetData).find((i) => i.index === itemIndex);
+                    if (!item) return null;
+                    return (
+                      <Card
+                        key={itemIndex}
+                        item={item}
+                        favoriteItems={favoriteItems}
+                      />
+                    );
+                  })
                 ) : (
                   <div className="no-recently-viewed">
                     <h2>No Recently Viewed Items</h2>
