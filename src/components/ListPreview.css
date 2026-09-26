@@ -1,0 +1,29 @@
+.list-preview-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  gap: 10px;
+  width: 300px;
+  height: 150px;
+  border: 2px solid goldenrod;
+  border-radius: 16px;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background-color: goldenrod;
+    color: white;
+  }
+  &:active {
+    background-color: white;
+    color: goldenrod;
+    opacity: 0.8;
+    scale: 0.9;
+  }
+
+  & h3 {
+    text-align: left;
+  }
+}

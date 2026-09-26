@@ -3,7 +3,7 @@ import { Header } from '../components/Header';
 import { FileCard } from '../components/FileCard';
 import './FilePage.css';
 
-export function FilePage({ item, favoriteItems }) {
+export function FilePage({ lists, setLists, item, favoriteItems, recentlyViewedItems, setRecentlyViewedItems }) {
   const [captionText, setCaptionText] = useState('');
   const [isLoading, setIsLoading] = useState(true);
 
@@ -34,6 +34,29 @@ export function FilePage({ item, favoriteItems }) {
     }, 2000);
   }
 
+  function saveToList(e) {
+    const selectElement = document.querySelector('select');
+    const selectedIndex = selectElement.value;
+    if (selectedIndex === '') return;
+    if (lists[selectedIndex].items.includes(item)) alert('This item is already in the selected list.');
+
+    if (!lists[selectedIndex].items.includes(item)) {
+      const newLists = [...lists];
+      const selectedList = newLists[selectedIndex];
+
+      selectedList.items.push(item);
+      selectedList.updatedDate = new Date().toLocaleDateString();
+
+      setLists(newLists);
+      localStorage.setItem('lists', JSON.stringify(newLists));
+
+      e.target.textContent = 'Saved!';
+      setTimeout(() => {
+        e.target.textContent = 'Save';
+      }, 2000);
+    }
+  }
+
   return (
     <>
       <Header
@@ -45,6 +68,8 @@ export function FilePage({ item, favoriteItems }) {
         <FileCard
           item={item}
           favoriteItems={favoriteItems}
+          recentlyViewedItems={recentlyViewedItems}
+          setRecentlyViewedItems={setRecentlyViewedItems}
         />
         <div className="section">
           <h2>{item.name}</h2>
@@ -77,12 +102,20 @@ export function FilePage({ item, favoriteItems }) {
 
           <label>
             Save to
-            <select>
-              <option value="placeholder">Placeholder</option>
-              <option value="unavilable">Feature unavailable</option>
-              <option value="later">Try later</option>
+            <select disabled={lists.length === 0}>
+              {lists.length > 0 ? (
+                <>
+                  {lists.map((list, index) => (
+                    <option key={index} value={index}>
+                      {list.name}
+                    </option>
+                  ))}
+                </>
+              ) : (
+                <option value="">No lists available</option>
+              )}
             </select>
-            <button className="save">Save</button>
+            <button onClick={saveToList} disabled={lists.length === 0} className="save">Save</button>
           </label>
         </div>
         <div className="section tag-section">

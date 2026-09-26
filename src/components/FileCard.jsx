@@ -1,11 +1,18 @@
 import { useState } from "react";
 import "./FileCard.css";
 
-export function FileCard({ item, favoriteItems }) {
+export function FileCard({ item, favoriteItems, recentlyViewedItems, setRecentlyViewedItems }) {
   let namePath = item.name.toLowerCase().replace(/[\s/]+/g, '-');
   namePath = namePath.replace(/[^a-z0-9-]/g, '');
   const [getFavoriteItems, setFavoriteItems] = favoriteItems;
   const [isLoading, setIsLoading] = useState(true);
+
+  if (recentlyViewedItems && !recentlyViewedItems.includes(item.index)) {
+    const timestamp = new Date().getTime();
+    const updatedRecentlyViewed = [...recentlyViewedItems, [item.index, timestamp]];
+    setRecentlyViewedItems(updatedRecentlyViewed);
+    localStorage.setItem('recentlyViewedItems', JSON.stringify(updatedRecentlyViewed));
+  }
 
   function addtoFavorites() {
     setFavoriteItems([...getFavoriteItems, namePath]);
@@ -38,7 +45,6 @@ export function FileCard({ item, favoriteItems }) {
   }
 
   function handleLoaded() {
-    console.log('File loaded successfully');
     setIsLoading(false);
   }
 

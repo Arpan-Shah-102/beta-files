@@ -1,0 +1,50 @@
+h2 {
+  margin-top: 40px;
+}
+
+.large-scroll-preview {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+
+  & .preview-scroll {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+
+    & .scroll-container {
+      border-radius: 36px;
+      border-top: 2px solid goldenrod;
+      
+      & .scroll-thing {
+        padding: 30px;
+        overflow-x: auto;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 20px;
+        height: 460px;
+        overflow-y: hidden;
+
+        &.lists {
+          height: 230px;
+        }
+        & .no-recently-viewed {
+          height: 100%;
+          width: 100%;
+          text-align: center;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          gap: 20px;
+        }
+      }
+    }
+  }
+}

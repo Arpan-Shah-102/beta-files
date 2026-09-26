@@ -1,0 +1,39 @@
+sub.edit-icon {
+  display: inline-block;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    scale: 1.1;
+    color: goldenrod;
+  }
+  &:active {
+    scale: 0.9;
+    opacity: 0.5;
+  }
+}
+
+button.btn {
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    scale: 1.05;
+  }
+  &:active {
+    scale: 0.95;
+    opacity: 0.8;
+  }
+
+  &.back-to-lists {
+    position: absolute;
+    top: 120px;
+    left: 20px;
+  }
+  &.delete-list {
+    position: absolute;
+    top: 120px;
+    right: 20px;
+  }
+}
+main.list-item-page .grid {
+  min-height: calc(100vh - 420px);
+}

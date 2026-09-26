@@ -8,12 +8,13 @@ export function Grid({ items, favoriteItems }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
-  const tags = ["Audio", "Video", "Image", "Filter", "Lights", "Good angle", "Conversation",
-    "Bad lighting", "Bad angle", "Jacob", "Ayden", "Tyce", "Jackson", "Caught", "Backflips",
-    "Freaky", "Peak", "Singing", "Spanking", "Opryland", "Pillow game", "Pillow demon",
-    "White smash", "Spinning pillows", "Smashing pillows", "Action", "Caught on filter", "Hand",
-    "Dead", "Landry", "Sam", "Charlie", "Cash", "Phoenix", "Braxton", "Devonte", "Football",
-    "Jumping", "Filter Failed", "Caption", "Nationals", "State"];
+  const tags = ["Nationals", "State", "Video", "Image", "Audio", "Filter", "Lights", "Good Angle", "Jacob", "Ayden", "Jackson", "Tyce",
+    "Conversation", "Sam", "Bad Angle", "Bad Lighting", "Freaky", "Pillow Demon",
+    "White Smash", "Peak", "Backflips", "Caught", "Cash", "Landry", "Braxton", "Just Dance",
+    "Singing", "Charlie", "Audio", "Action", "Fishing", "Spanking", "Sleeping", "Engineering",
+    "Competition", "Dead", "Phoenix", "Opryland", "Mogging", "Spinning Pillows", "Smashing Pillows",
+    "John", "Unlegible", "Fights", "Rizz", "Jayvian", "Mrs Spear", "Addy"
+  ];
 
   const handleDropdownToggle = () => {
     setDropdownOpen(!dropdownOpen);
@@ -41,21 +42,25 @@ export function Grid({ items, favoriteItems }) {
   return (
     <div className="grid-container">
       <div className="filters">
-        <button onClick={handleDropdownToggle}>Filter by Tags</button>
-        {dropdownOpen && (
-          <div className="dropdown">
-            {tags.map((tag, index) => (
-              <label key={index}>
-                <input
-                  type="checkbox"
-                  checked={selectedFilters.includes(tag.toLowerCase())}
-                  onChange={() => {handleFilterChange(tag.toLowerCase())}}
-                />
-                {tag}
-              </label>
-            ))}
-          </div>
-        )}
+
+        <div className="dropdown-container">
+          <button onClick={handleDropdownToggle}>Filter by Tags</button>
+
+          {dropdownOpen && (
+            <div className="dropdown">
+              {tags.map((tag, index) => (
+                <label key={index}>
+                  <input
+                    type="checkbox"
+                    checked={selectedFilters.includes(tag.toLowerCase())}
+                    onChange={() => {handleFilterChange(tag.toLowerCase())}}
+                    />
+                  {tag}
+                </label>
+              ))}
+            </div>
+          )}
+        </div>
 
         <input onChange={search} className="searchbar" type="text" placeholder="Search..." />
 

@@ -1,7 +1,7 @@
 import { Card } from './Card'
 import './FilterGrid.css';
 
-export function FilterGrid({ items, sortBy, searchTerm, filterBy, favoriteItems}) {
+export function FilterGrid({ lists, setLists, listName, items, sortBy, searchTerm, filterBy, favoriteItems, recentlyViewedItems }) {
   const getFavoriteItems = favoriteItems[0];
   const sortedItems = [];
   let newItems = [];
@@ -30,30 +30,44 @@ export function FilterGrid({ items, sortBy, searchTerm, filterBy, favoriteItems}
         }
       });
     }
-  } else if (filterBy.length > 0) {
+  } else if (filterBy == "recently-viewed") {
+    if (recentlyViewedItems && recentlyViewedItems.length > 0) {
+      Object.values(sortedItems).filter((item) => {
+        if (recentlyViewedItems.includes(item.index)) {
+          newItems.push(item);
+        }
+      });
+    }
+  } else if (filterBy.length > 0 && filterBy != "list") {
     newItems = [...sortedItems];
     const mediaFilters = ['audio', 'image', 'video'];
-
+    const locationFilters = ['nationals', 'state'];
+  
     const filteredItems = sortedItems.filter((item) => {
-      const selectedMediaFilters = filterBy.filter((filter) =>
-        mediaFilters.includes(filter)
+      const itemFileType = (item.filetype || item.fileType || '').toLowerCase();
+      const itemLocation = (item.type || item.location || '').toLowerCase();
+  
+      const selectedMediaFilters = filterBy.filter((f) => mediaFilters.includes(f));
+      const selectedLocationFilters = filterBy.filter((f) => locationFilters.includes(f));
+      const selectedTagFilters = filterBy.filter(
+        (f) => !mediaFilters.includes(f) && !locationFilters.includes(f)
       );
-      const selectedTagFilters = filterBy.filter((filter) =>
-        !mediaFilters.includes(filter)
-      );
-
+  
       const matchesMedia =
-        selectedMediaFilters.length === 0 ||
-        selectedMediaFilters.includes(item.filetype);
-
+        selectedMediaFilters.length === 0 || selectedMediaFilters.includes(itemFileType);
+  
+      const matchesLocation =
+        selectedLocationFilters.length === 0 || selectedLocationFilters.includes(itemLocation);
+  
       const matchesTags =
         selectedTagFilters.length === 0 ||
         selectedTagFilters.every((selectedTag) =>
           item.tags?.some((tag) => tag.toLowerCase() === selectedTag)
         );
-
-      return matchesMedia && matchesTags;
+  
+      return matchesMedia && matchesLocation && matchesTags;
     });
+  
     newItems = filteredItems;
   } else {
     newItems.push(...Object.values(sortedItems));
@@ -69,13 +83,31 @@ export function FilterGrid({ items, sortBy, searchTerm, filterBy, favoriteItems}
 
   return (
     <div className="grid">
-      {newItems.map((item, index) => (
-        <Card
-          key={index}
-          item={item}
-          favoriteItems={favoriteItems}
-        />
-      ))}
+      {newItems.length === 0 ? (
+        <div className="no-results">
+          <h3>{filterBy == "list" ? "No Items in List" : "No Results Found"}</h3>
+        </div>
+      ) : filterBy == "list" ? (
+        newItems.map((item, index) => (
+          <Card
+            key={index}
+            item={item}
+            favoriteItems={favoriteItems}
+            isListPage={filterBy == "list"}
+            lists={lists}
+            setLists={setLists}
+            listName={listName}
+          />
+        ))
+      ) : (
+        newItems.map((item, index) => (
+          <Card
+            key={index}
+            item={item}
+            favoriteItems={favoriteItems}
+          />
+        ))
+      )}
     </div>
-  )
+  );
 }

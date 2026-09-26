@@ -1,0 +1,3 @@
+.recently-viewed > *:has(h3) {
+  min-height: calc(100dvh - 380px);
+}

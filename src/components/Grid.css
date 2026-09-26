@@ -55,7 +55,7 @@ button {
 }
 .dropdown {
   position: absolute;
-  top: 30px;
+  top: 40px;
   background-color: white;
   border: 1px solid goldenrod;
   padding: 10px;

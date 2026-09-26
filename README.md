@@ -18,6 +18,15 @@ This won't fix the slow loading times bug. The assets take a while to load, even
 
 ### Update Log
 
+#### Page Update V4.0 - 9/26/2026
+1. Reworked tag logic
+2. Added the "More" page that shows more pages
+3. Reworked home page
+4. Added Custom Lists
+5. Added random File button
+6. Added Recently viewed
+7. Bug Fixes
+
 #### Vercel Update V2.5 - 9/19/2026
 1. Fixed bug where sharing link doesn't work on vercel
 2. Added a share button to each file page

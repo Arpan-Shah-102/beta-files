@@ -2,7 +2,7 @@ import { NavLink } from 'react-router';
 import { useState } from 'react';
 import './Card.css'
 
-export function Card({ item, favoriteItems }) {
+export function Card({ item, favoriteItems, isListPage, lists, setLists, listName }) {
   const [getFavoriteItems, setFavoriteItems] = favoriteItems;
   const [isLoading, setIsLoading] = useState(true);
   let namePath = item.name.toLowerCase().replace(/[\s/]+/g, '-');
@@ -33,18 +33,38 @@ export function Card({ item, favoriteItems }) {
     setIsLoading(false);
   }
 
+  function removeFromList() {
+    if (confirm(`Are you sure you want to remove "${item.name}" from the list "${listName}"?`)) {
+      const updatedLists = lists.map((list) => {
+        if (list.name === listName) {
+          const updatedItems = list.items.filter((listItem) => listItem.name !== item.name);
+          return { ...list, items: updatedItems };
+        }
+        return list;
+      });
+      setLists(updatedLists);
+      localStorage.setItem("lists", JSON.stringify(updatedLists));
+    }
+  }
+
   if (item.filetype == "text") {return;}
   return (
     <div
       className="full-card"
     >
       <p
-        className="favorite"
+        className="top-thing favorite"
         data-item={namePath}
         onClick={handleFavoriteClick}
       >
         {getFavoriteItems && getFavoriteItems.includes(namePath) ? (<>★</>) : (<>☆</>)}
       </p>
+      {isListPage && (
+        <p
+          className="top-thing remove-from-list"
+          onClick={removeFromList}
+        >🗑</p>
+      )}
       <NavLink
         to={`/${namePath}`}
       >
