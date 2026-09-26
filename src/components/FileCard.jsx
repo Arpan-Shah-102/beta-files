@@ -7,9 +7,19 @@ export function FileCard({ item, favoriteItems, recentlyViewedItems, setRecently
   const [getFavoriteItems, setFavoriteItems] = favoriteItems;
   const [isLoading, setIsLoading] = useState(true);
 
-  if (recentlyViewedItems && !recentlyViewedItems.includes(item.index)) {
+  if (recentlyViewedItems && !recentlyViewedItems.some(([index]) => index === item.index)) {
     const timestamp = new Date().getTime();
     const updatedRecentlyViewed = [...recentlyViewedItems, [item.index, timestamp]];
+    setRecentlyViewedItems(updatedRecentlyViewed);
+    localStorage.setItem('recentlyViewedItems', JSON.stringify(updatedRecentlyViewed));
+  } else if (recentlyViewedItems && recentlyViewedItems.some(([index]) => index === item.index)) {
+    const updatedRecentlyViewed = recentlyViewedItems.map(([index, timestamp]) => {
+      if (index === item.index) {
+        return [index, new Date().getTime()];
+      } else {
+        return [index, timestamp];
+      }
+    });
     setRecentlyViewedItems(updatedRecentlyViewed);
     localStorage.setItem('recentlyViewedItems', JSON.stringify(updatedRecentlyViewed));
   }

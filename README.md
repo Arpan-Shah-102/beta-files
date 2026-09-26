@@ -18,6 +18,9 @@ This won't fix the slow loading times bug. The assets take a while to load, even
 
 ### Update Log
 
+#### Bug Fix V4.1 - 9/26/2026
+1. Fixed recently viewed bug
+
 #### Page Update V4.0 - 9/26/2026
 1. Reworked tag logic
 2. Added the "More" page that shows more pages
